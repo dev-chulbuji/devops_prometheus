@@ -17,3 +17,6 @@ networks:
   default:
     external:
       name: monitoring
+
+
+

@@ -12,23 +12,3 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: [ 'localhost:9090' ]
-
-  - job_name: 'python_app'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['localhost:8080']
-
-  - job_name: 'node-exporter'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['node-exporter:9100']
-
-  - job_name: 'prometheus-nginxlog-exporter'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['prometheus-nginxlog-exporter:4040']
-
-  - job_name: 'nginx-prometheus-exporter'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['nginx-prometheus-exporter:9113']
