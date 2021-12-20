@@ -10,6 +10,7 @@ services:
       - '--web.console.templates=/usr/share/prometheus/consoles'
     volumes:
       - ../../config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ../../config/prometheus/dj_cuostm.json:/etc/prometheus/sd/dj_custom.json
     ports:
       - "9090:9090"
 

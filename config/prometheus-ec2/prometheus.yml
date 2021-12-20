@@ -14,17 +14,23 @@ scrape_configs:
       - targets: [ 'localhost:9090' ]
 
   - job_name: 'node'
+    metrics_path: /metrics
     ec2_sd_configs:
       - region: ap-northeast-2
         port: 9100
+        refresh_interval: 10s # default 60s
+        filters:
+          - name: tag:monitoring
+            values:
+              - 'true'
     relabel_configs:
-      - source_labels: [ __meta_ec2_tag_Name ]
-        target_label: instance
       - source_labels: [ __meta_ec2_private_ip ]
         regex: '(.*)'
         replacement: '${1}:9100'
         action: replace
         target_label: __address__
+      - source_labels: [ __meta_ec2_tag_Name ]
+        target_label: instance
       - source_labels: [ __meta_ec2_tag_group ]
         target_label: group
       - source_labels: [ __meta_ec2_instance_type ]
