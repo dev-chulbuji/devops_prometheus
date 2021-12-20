@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   prometheus:
-    container_name: prometheus
+    container_name: prom
     image: prom/prometheus:latest
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -10,7 +10,7 @@ services:
       - '--web.console.templates=/usr/share/prometheus/consoles'
     volumes:
       - ../../config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      - ../../config/prometheus/dj_cuostm.json:/etc/prometheus/sd/dj_custom.json
+      - ../../config/prometheus/dj_custom.json:/etc/prometheus/sd/dj_custom.json
     ports:
       - "9090:9090"
 
