@@ -16,16 +16,18 @@ scrape_configs:
   - job_name: 'node'
     ec2_sd_configs:
       - region: ap-northeast-2
-        port: 8080
+        port: 9100
     relabel_configs:
       - source_labels: [ __meta_ec2_tag_Name ]
         target_label: instance
       - source_labels: [ __meta_ec2_private_ip ]
         regex: '(.*)'
-        replacement: '${1}:8080'
+        replacement: '${1}:9100'
         action: replace
         target_label: __address__
       - source_labels: [ __meta_ec2_tag_group ]
         target_label: group
       - source_labels: [ __meta_ec2_instance_type ]
         target_label: instance_type
+      - source_labels: [ __meta_ec2_architecture ]
+        target_label: arch
