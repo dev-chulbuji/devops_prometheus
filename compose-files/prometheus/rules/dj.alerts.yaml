@@ -1,0 +1,16 @@
+groups:
+  - name: dj-alert
+    interval: 10s
+    limit: 0
+    rules:
+      - alert: alerts:process_cpu_seconds_total:10
+        expr: process_cpu_seconds_total > 10
+        for: 5s
+        labels:
+          dj: test
+          serverity: critical
+        annotations:
+          summary: "process_cpu_seconds_total: {{ $value }}"
+          description: "process_cpu_seconds_total: {{ $value }}"
+
+

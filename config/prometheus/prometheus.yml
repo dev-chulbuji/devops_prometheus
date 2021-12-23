@@ -1,19 +1,35 @@
 global:
-  scrape_interval:     15s # By default, scrape targets every 15 seconds.
-  evaluation_interval: 15s # By default, scrape targets every 15 seconds.
-
+  scrape_interval:     15s
+  scrape_timeout:      10s
+  evaluation_interval: 1m
   external_labels:
-    monitor: 'devops-monitoring'
+    monitor: 'dev-prometheus'
+  query_log_file: /etc/prometheus/query.log
 
+# rule file list evaluated by `global.evaluation_interval`
 rule_files:
+  - /etc/prometheus/rules/*.yaml
 
 scrape_configs:
-  - job_name: 'prometheus'
-    scrape_interval: 5s
+  - job_name: prometheus
+    scrape_interval: 15s
     static_configs:
       - targets: [ 'localhost:9090' ]
 
-  - job_name: 'dj-custom'
-    file_sd_configs:
-      - files:
-          - /etc/prometheus/sd/dj_custom.json
+#  - job_name: 'dj-custom'
+#    scrape_interval: 10s
+#    scrape_timeout: 10s
+#    metrics_path: /metrics
+#    scheme: http
+#    http_sd_configs:
+#      - follow_redirects: false
+#        refresh_interval: 1m
+#        url: http://sdapp:8080/targets
+#
+#
+#  - job_name: 'dj-custom'
+#    file_sd_configs:
+#      - files:
+#          - /etc/prometheus/sd/dj_custom.json
+#        refresh_interval: 10s
+

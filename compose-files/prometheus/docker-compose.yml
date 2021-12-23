@@ -6,11 +6,15 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention=1h'
+      - '--storage.tsdb.retention.size=1TB'
+      - '--storage.tsdb.wal-compression'
+      - '--web.enable-lifecycle'
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
     volumes:
       - ../../config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      - ../../config/prometheus/dj_custom.json:/etc/prometheus/sd/dj_custom.json
+      - ./rules:/etc/prometheus/rules
     ports:
       - "9090:9090"
 
