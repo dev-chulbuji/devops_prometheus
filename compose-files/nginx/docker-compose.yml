@@ -14,7 +14,7 @@ services:
     image: nginx/nginx-prometheus-exporter:latest
     ports:
       - "9113:9113"
-    command: -nginx.scrape-uri http://nginx/metrics
+    command: -nginx.scrape-uri http://nginx/metrics -web.telemetry-path=/metrics
 
   prometheus-nginxlog-exporter:
     container_name: prometheus-nginxlog-exporter

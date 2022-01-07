@@ -4,3 +4,7 @@
 2021/12/01 00:46:46 [error] 32#32: *10 open() "/usr/share/nginx/html/HNAP1" failed (2: No such file or directory), client: 172.26.0.1, server: , request: "GET /HNAP1 HTTP/1.1", host: "10.61.61.182:8080"
 2021/12/01 12:48:46 [error] 32#32: *24 open() "/usr/share/nginx/html/nmaplowercheck1638362926" failed (2: No such file or directory), client: 172.26.0.1, server: , request: "GET /nmaplowercheck1638362926 HTTP/1.1", host: "10.61.61.182:8080"
 2021/12/01 12:48:46 [error] 32#32: *25 open() "/usr/share/nginx/html/HNAP1" failed (2: No such file or directory), client: 172.26.0.1, server: , request: "GET /HNAP1 HTTP/1.1", host: "10.61.61.182:8080"
+2022/01/06 13:49:29 [error] 31#31: *1 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.22.0.1, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2022/01/06 14:04:07 [error] 31#31: *9 open() "/usr/share/nginx/html/stub_status" failed (2: No such file or directory), client: 172.22.0.1, server: , request: "GET /stub_status HTTP/1.1", host: "localhost:8080"
+2022/01/06 14:04:40 [error] 31#31: *10 open() "/usr/share/nginx/html/stub_status" failed (2: No such file or directory), client: 172.22.0.1, server: , request: "GET /stub_status HTTP/1.1", host: "localhost:8080"
+2022/01/06 14:04:49 [error] 31#31: *12 open() "/usr/share/nginx/html/stub_status" failed (2: No such file or directory), client: 172.22.0.1, server: , request: "GET /stub_status HTTP/1.1", host: "localhost:8080"
