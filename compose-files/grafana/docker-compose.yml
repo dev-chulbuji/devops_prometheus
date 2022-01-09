@@ -8,9 +8,18 @@ services:
     volumes:
       - ../../config/grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
     environment:
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin # Viewer
-      - GF_USERS_DEFAULT_THEME=light
+      GF_RENDERING_SERVER_URL: "http://renderer:8081/render"
+      GF_RENDERING_CALLBACK_URL: "http://grafana:3000/"
+      GF_LOG_FILTERS: "rendering:debug"
+      GF_USERS_DEFAULT_THEME: "light"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: "Admin"
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+  renderer:
+    image: grafana/grafana-image-renderer:latest
+    ports:
+      - "8081:8081"
+    environment:
+      IGNORE_HTTPS_ERRORS: "true"
 
 networks:
   default:
